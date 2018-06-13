@@ -1,0 +1,17 @@
+<div class="container">
+  <h2 align="center ">My Cart</h2>
+  <ul class="list-group center">
+    <% @line_items.each do |line_item| %>
+      <li class="list-group-item">Poduct:<%= line_item.product.name %></li>
+      <li class="list-group-item">Price per:<%= number_to_currency line_item.product.price %></li>
+      <li class="list-group-item">Qty: <%= line_item.quantity %></li>
+      <li class="list-group-item">Subtotal: <%= number_to_currency line_item.line_item_total %></li>
+      <hr>
+    <% end %>
+  </ul>
+
+  <div>
+    <%= link_to "Proceed to Checkout?", checkout_path, class: "btn btn-success" %>
+  </div>
+
+</div>

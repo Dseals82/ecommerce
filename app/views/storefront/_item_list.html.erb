@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-md-4">
+        <div class="well">
+          <% if product.image.url.nil? == false %>
+            <p><%= image_tag product.image.url, class: 'img-responsive' %></p>
+          <% end %>
+          <h3><%= link_to product.name, product %></h3>
+          <p><%= number_to_currency product.price %></p>
+          <p>
+            <a href="#" data-toggle="modal" data-target="#myModal_<%= product.id %>">
+              <span class="glyphicon glyphicon-plus"></span> Quick Info
+            </a>
+          </p>
+        </div>
+      </div>
+      <div class="modal fade" id="myModal_<%= product.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+              <% if product.image.url.nil? == false %>
+                <p><%= image_tag product.image.url, class: "img-responsive storefront-pics" %></p>
+              <% end %>
+              <h3><%= link_to product.name, product %></h3>
+              <p><%= number_to_currency product.price %></p>
+              <p>made by <%= product.brand %></p>
+            </div>
+            <div class="modal-footer">
+              <p>
+                <div class="modal-footer">
+                  <!-- Delete those "Save Changes" and "Close" buttons that were here -->
+                  <p>
+                  <%= form_tag add_to_cart_path do %>
+                    <%= hidden_field_tag :product_id, product.id %>
+                    <%= number_field_tag :quantity, nil, placeholder: "How many?" %>
+                    <%= submit_tag "Add to Cart", class: "btn btn-success" %>
+                  <% end %>
+                  </p>
+                </div>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>

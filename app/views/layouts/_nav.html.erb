@@ -30,29 +30,24 @@
 
       <!-- within layouts/application.html.erb -->
 
-<ul class="nav navbar-nav navbar-right">
-  <li>
-    <%=link_to view_order_path do%>
-    <span class="glyphicon glyphicon-shopping-cart"></span> View Cart
-    <%end%>
-  </li>
-
+      <!-- within layouts/application.html.erb -->
       <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "View Cart", view_order_path %></li> <!-- already here -->
+        <!-- add this code: -->
         <% if user_signed_in? %>
-        <li>
-          <%= link_to 'Log Out', destroy_user_session_path, method: :delete%>
-        </li>
-        <%else%>
-          <li>
-            <%=link_to 'Sign In', new_user_session_path%>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Hello, <%= current_user.email %> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+            </ul>
           </li>
-          <li>
-            <%=link_to 'Sign up', new_user_registration_path%>
-          </li>
-
-        <%end%>
+        <% else %>
+          <li><%= link_to "Sign In", new_user_session_path %></li>
+        <% end %>
       </ul>
-      <% if user_signed_in? %>
+      <!-- <% if user_signed_in? %>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Link</a></li>
         <li class="dropdown">
@@ -65,7 +60,7 @@
             <li><%=link_to 'Inventory', products_path%></li>
           </ul>
         </li>
-      </ul>
+      </ul> -->
       <%end%>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

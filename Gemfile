@@ -36,6 +36,9 @@ gem 'pry-rails' #for rails c
 gem 'better_errors', group: :development
 gem 'binding_of_caller' #works with better errors to see
                         #instance variable values
+gem 'stripe'
+gem 'figaro'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

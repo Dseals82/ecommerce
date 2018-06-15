@@ -8,13 +8,28 @@ body {
 hr {
   width: 40%;
 }
+.shopping_text {
+    text-align: center;
+    padding-top: 30px;
+}
 
+.main-page-text {
+  padding-bottom: 15px;
+}
 
+.brand_heading {
+  padding-bottom: 0;
+  margin-top: 0;
+}
+
+img {
+  text-align: center !important;
+}
 .main {
   background-image: url("https://shopds.net/wp-content/uploads/2018/05/1-movado-banner.jpg");
   background-repeat: no-repeat;
   background-position: center;
-  height: 350px;
+  height: 550px;
   background-attachment: fixed;
   background-size: cover;
 

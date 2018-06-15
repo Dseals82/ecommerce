@@ -10,9 +10,10 @@
     <% end %>
   </ul>
 
-  <div>
+  <div align = "center">
+    <% if @line_items.any?%>
     <%= link_to "Proceed to Checkout?", checkout_path, class: "btn btn-success" %>
-    
+    <%end%>
   </div>
 
 </div>

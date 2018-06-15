@@ -22,8 +22,10 @@
               <li><%= link_to category.name, categorical_path(category_id: category.id) %></li>
             <% end %>
           </ul>
-          <li><%=link_to 'Brand', branding_path%></li>
+          <li><%=link_to 'DISCOUNTS', branding_path%></li>
+          <% if user_signed_in? && current_user.admin?%>
           <li><%=link_to 'Inventory', products_path%></li>
+          <%end%>
         </li>
       </ul>
 
@@ -32,9 +34,10 @@
 
       <!-- within layouts/application.html.erb -->
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "View Cart", view_order_path %></li> <!-- already here -->
+        <!-- already here -->
         <!-- add this code: -->
         <% if user_signed_in? %>
+        <li><%= link_to "View Cart", view_order_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             Hello, <%= current_user.email %> <span class="caret"></span></a>
